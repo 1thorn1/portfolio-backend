@@ -3,7 +3,7 @@ package com.juhee.portfolio_backend;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-// auto-deploy test
+// auto-deploy test 2
 @SpringBootApplication
 public class PortfolioBackendApplication {
 
