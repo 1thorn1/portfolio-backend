@@ -1,0 +1,2 @@
+[deploy]
+startCommand = "java -Dspring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect -Dadmin.secret-key=$ADMIN_SECRET_KEY -jar build/libs/portfolio-backend-0.0.1-SNAPSHOT.jar"
