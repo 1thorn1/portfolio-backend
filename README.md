@@ -82,22 +82,3 @@ free 플랜은 15분 무활동 시 슬립하며, 첫 요청 시 콜드스타트�
 | `SPRING_JPA_HIBERNATE_DDLAUTO` | `render.yaml` (`update`) |
 | `ADMIN_SECRET_KEY` | 대시보드에서 수동 입력 |
 | `PORT` | Render 자동 주입 → `docker-entrypoint.sh`가 `server.port`로 전달 |
-
-## 데이터 마이그레이션 (Railway MySQL → Render PostgreSQL)
-
-기존 Railway MySQL 데이터를 옮기려면 [`scripts/migrate_mysql_to_postgres.py`](./scripts/migrate_mysql_to_postgres.py) 사용:
-
-```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install "pymysql>=1.1" "psycopg[binary]>=3.1"
-
-export SOURCE_MYSQL_URL='mysql://root:PASSWORD@sakura.proxy.rlwy.net:43143/railway'
-export TARGET_PG_URL='postgresql://portfolio:PASSWORD@dpg-xxxx-a.singapore-postgres.render.com/portfolio'
-
-python scripts/migrate_mysql_to_postgres.py          # 드라이런 (행 수만 출력)
-python scripts/migrate_mysql_to_postgres.py --run    # 실제 복사 (PK 기준 upsert)
-```
-
-- Render 백엔드가 한 번 부팅되어 테이블(`comment`, `visitor_log`)이 생성된 뒤 실행
-- Railway MySQL 서비스가 실행 중이어야 함
-- 완전히 새로 넣으려면 `--run --truncate`
