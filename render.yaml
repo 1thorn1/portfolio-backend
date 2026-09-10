@@ -1,0 +1,25 @@
+databases:
+  - name: portfolio-db
+    plan: free
+    region: singapore
+    databaseName: portfolio
+    user: portfolio
+
+services:
+  - type: web
+    name: portfolio-backend
+    runtime: docker
+    plan: free
+    region: singapore
+    branch: master
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/comments
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: portfolio-db
+          property: connectionString
+      - key: SPRING_JPA_HIBERNATE_DDLAUTO
+        value: update
+      - key: ADMIN_SECRET_KEY
+        sync: false

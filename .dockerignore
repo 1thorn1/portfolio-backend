@@ -1,0 +1,8 @@
+.git
+.gradle
+.idea
+.omc
+build
+*.iml
+HELP.md
+railway.toml
