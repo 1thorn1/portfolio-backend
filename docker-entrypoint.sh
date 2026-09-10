@@ -13,7 +13,12 @@ if [ -n "$DATABASE_URL" ]; then
   export SPRING_DATASOURCE_URL="jdbc:postgresql://${hostpath}"
 fi
 
+# Render expects the app on $PORT (default 10000) bound to 0.0.0.0.
+PORT="${PORT:-10000}"
+echo "[entrypoint] starting on 0.0.0.0:${PORT}"
+
 exec java \
-  -Dserver.port="${PORT:-8080}" \
+  -Dserver.port="${PORT}" \
+  -Dserver.address=0.0.0.0 \
   -Dadmin.secret-key="${ADMIN_SECRET_KEY}" \
   -jar /app/app.jar

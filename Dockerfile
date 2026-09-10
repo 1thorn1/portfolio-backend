@@ -14,5 +14,5 @@ WORKDIR /app
 COPY --from=build /app/build/libs/portfolio-backend-0.0.1-SNAPSHOT.jar app.jar
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
-EXPOSE 8080
+EXPOSE 10000
 ENTRYPOINT ["/docker-entrypoint.sh"]
