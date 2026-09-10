@@ -12,6 +12,9 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/api/**")
                 .allowedOriginPatterns(
                         "http://localhost:3000",
+                        "https://kangjuhee-portfolio.vercel.app",
+                        "https://kangjuhee-portfolio-*.vercel.app",
+                        "https://kangjuhee-portfolio-*-1thorn1s-projects.vercel.app",
                         "https://portfolio-frontend-one-pearl.vercel.app",
                         "https://portfolio-frontend-*-1thorn1s-projects.vercel.app"
                 )
