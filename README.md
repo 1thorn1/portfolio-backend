@@ -55,7 +55,9 @@ export ADMIN_SECRET_KEY=local-dev-key
    - **portfolio-db** — PostgreSQL (free, Singapore)
    - **portfolio-backend** — Docker 웹 서비스 (free, Singapore)
 4. `ADMIN_SECRET_KEY` 값 입력 (`sync: false` 로 표시된 항목) → **Apply**
-5. 첫 빌드 완료 후 서비스 URL 확인 (예: `https://portfolio-backend.onrender.com`)
+5. 첫 빌드 완료 후 서비스 URL 확인 — `onrender.com` 서브도메인은 전역 고유라
+   이름이 겹치면 접미사가 붙습니다. 현재 배포 주소: `https://portfolio-backend-p51a.onrender.com`
+   (이 값이 바뀌면 프론트엔드 `Portfolio.dc.html`의 `apiBase`도 함께 수정)
 
 `DATABASE_URL`, DB 계정 등 나머지 환경변수는 `render.yaml`이 `portfolio-db`에서 자동 주입합니다.
 컨테이너 시작 시 `docker-entrypoint.sh`가 Render의 `DATABASE_URL`(`postgresql://...`)을
