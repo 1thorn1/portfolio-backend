@@ -12,6 +12,7 @@ services:
     plan: free
     region: singapore
     branch: master
+    autoDeploy: true
     dockerfilePath: ./Dockerfile
     healthCheckPath: /api/comments
     envVars:
